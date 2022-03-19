@@ -1,0 +1,3 @@
+C:/Users/AS/CLionProjects/Satellite/cmake-build-debug/CMakeFiles/Satellite.dir
+C:/Users/AS/CLionProjects/Satellite/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/AS/CLionProjects/Satellite/cmake-build-debug/CMakeFiles/rebuild_cache.dir
