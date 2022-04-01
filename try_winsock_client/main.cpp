@@ -5,16 +5,21 @@
 #pragma comment(lib, "ws2_32.lib")
 #include <winsock2.h>
 #include <iostream>
+#include <string>
 
 #pragma warning(disable: 4996)
 
 SOCKET Connection;
 
-void ClientHandler() {
-    char msg[256];
+[[noreturn]] void ClientHandler() {
+    int msg_size;
     while(true) {
-        recv(Connection, msg, sizeof(msg), NULL);
+        recv(Connection, (char*)&msg_size, sizeof(int), 0);
+        char* msg = new char[msg_size + 1];
+        msg[msg_size] = '\0';
+        recv(Connection, msg, msg_size, 0);
         std::cout << msg << std::endl;
+        delete[] msg;
     }
 }
 
@@ -33,19 +38,22 @@ int main(int argc, char* argv[]) {
     addr.sin_port = htons(1111);
     addr.sin_family = AF_INET;
 
-    Connection = socket(AF_INET, SOCK_STREAM, NULL);
+    Connection = socket(AF_INET, SOCK_STREAM, 0);
     if(connect(Connection, (SOCKADDR*)&addr, sizeof(addr)) != 0) {
         std::cout << "Error: failed connect to server.\n";
         return 1;
     }
     std::cout << "Connected!\n";
 
-    CreateThread(NULL, NULL, (LPTHREAD_START_ROUTINE)ClientHandler, NULL, NULL, NULL);
+    CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)ClientHandler, nullptr, 0, nullptr);
 
-    char msg1[256];
+    std::string msg1;
     while(true) {
-        std::cin.getline(msg1, sizeof(msg1));
-        send(Connection, msg1, sizeof(msg1), NULL);
+        std::getline(std::cin, msg1);
+        if (msg1 == "_Exit") break;
+        int msg_size = msg1.size();
+        send(Connection, (char*)&msg_size, sizeof(int), 0);
+        send(Connection, msg1.c_str(), msg_size, 0);
         Sleep(100);
     }
 
