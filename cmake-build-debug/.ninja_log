@@ -1,7 +1,0 @@
-# ninja log v5
-10	757	6693353744762757	build.ninja	875362ca9206d044
-19	2081	6693353767378742	CMakeFiles/Satellite.dir/satelite.cpp.obj	4792da805e1f1c09
-11	2364	6693353770266959	CMakeFiles/Satellite.dir/vec_operations.cpp.obj	314cbc28eb98aa60
-28	2376	6693353770326917	CMakeFiles/Satellite.dir/integrator.cpp.obj	57405c2d61b8baa8
-1	2381	6693353770386876	CMakeFiles/Satellite.dir/main.cpp.obj	e9d708d234b6235c
-2381	2798	6693353774591286	Satellite.exe	7e46530b3c0b1918
