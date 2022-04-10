@@ -1,3 +1,0 @@
-D:/Satellite-main1/try_winsock_client/cmake-build-debug/CMakeFiles/try_winsock_client.dir
-D:/Satellite-main1/try_winsock_client/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/Satellite-main1/try_winsock_client/cmake-build-debug/CMakeFiles/rebuild_cache.dir
