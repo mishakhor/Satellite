@@ -4,6 +4,7 @@
 #include "handle_connections.h"
 #include "includes.h"
 #include <sstream>
+#include <vector>
 
 /** SAT and CLIENT contain ID and SOCKET of units **/
 std::map<int, SOCKET> SAT;
@@ -17,14 +18,15 @@ void send_to_client(const SOCKET& connection, const std::string& msg) {
     Sleep(10);
 }
 
-/** Function used to send Message string to satellite **/
-void send_to_satellite(int sat_ID, int command) {
-    if (SAT.find(sat_ID) == SAT.end()) std::cout << "There is no Satellite with this ID or it is not chosen\n";
-    SOCKET sat = SAT.find(sat_ID)->second;
-    send(sat, (char*)&sat_ID, sizeof(int), 0);
-}
+///** Function used to send Message string to satellite **/
+//void send_to_satellite(int sat_ID, int command) {
+//    if (SAT.find(sat_ID) == SAT.end()) std::cout << "There is no Satellite with this ID or it is not chosen\n";
+//    SOCKET sat = SAT.find(sat_ID)->second;
+//    send(sat, (char*)&sat_ID, sizeof(int), 0);
+//}
 
-int msg_from_client(SOCKET client) {
+/** Function used to get Satellite ID from client + stress test **/
+int id_from_client(SOCKET client) {
     int next_msg_size;
     char c;
     int i;
@@ -43,17 +45,54 @@ int msg_from_client(SOCKET client) {
         if (ss.fail() or ss.get(c)) {
             send_to_client(client, "Not an integer, try again or type 'back'");
             delete[] next_msg;
-            return msg_from_client(client);
+            return id_from_client(client);
         }
         if (SAT.find(i) == SAT.end()) {
             send_to_client(client, "There is no such ID, try again or type 'back'");
             delete[] next_msg;
-            return msg_from_client(client);
+            return id_from_client(client);
         }
     }
     delete[] next_msg;
     return i;
 }
+
+//bool impulse_from_client(SOCKET client) {
+//    int msg_size;
+//    char c;
+//    double i;
+//    recv(client, (char*)&msg_size, sizeof(int), 0);
+//    char* msg = new char[msg_size+1];
+//    msg[msg_size] = '\0';
+//    recv(client, msg, msg_size, 0);
+//    std::string str_msg = std::string(msg);
+//    if (str_msg == "back") {
+//        send_to_client(client, "You left successfully");
+//        delete[] msg;
+//        return false;
+//    }
+//    else {
+//        std::vector<std::string> arr;
+//        std::string temp;
+//        std::stringstream ss(msg);
+//        std::string token;
+//        while (ss >> token)
+//        {
+//            arr.push_back(token);
+//        }
+//        for (const auto& s : arr) {
+//            std::stringstream si(s);
+//            si >> i;
+//            if (si.fail() or si.get(c)) {
+//                //message
+//                return false;
+//            }
+//        }
+//        std::cout << arr[0] << " " << arr[1] << " " << arr[2] << " ";
+//        return true;
+//    }
+//
+//}
 
 
 /** Function that converts message to command ID. Returns 1 if the command doesn't exist **/
@@ -62,14 +101,11 @@ int commands(const char *message) {
     if (msg == "disconnect") return 0;
     if (msg == "refresh") return 3;
     if (msg == "get coords") return 4;
-    if (msg == "get coords cont") return 5;
-    if (msg == "stop getting coords") return 6;
+    if (msg == "broadcast coords") return 5;
+    if (msg == "stop broadcast") return 6;
+    if (msg == "add impulse") return 7;
+    //if (msg == "help") return 8;
     return 1;
-}
-
-void get_coords(char *message){
-    //send(SAT[!!!], message, sizeof(message), 0);
-    //place for iterator
 }
 
 
@@ -113,7 +149,7 @@ void ClientHandler(const int& client_ID) {
                 send_to_client(client, refresh_str.str());
 
                 /** Processing next message **/
-                satellite_id = msg_from_client(client);
+                satellite_id = id_from_client(client);
                 if (satellite_id == 0) break;
                 std::stringstream sat_connect_str;
                 refresh_str.setf(std::ios::fixed);
@@ -135,12 +171,41 @@ void ClientHandler(const int& client_ID) {
                 send(sat_, (char*)&command_id, sizeof(int), 0);
                 break;
             }
+            case 6: { // Stop getting coords continuously
+                if (satellite_id == 0) send_to_client(client, "Satellite is not chosen. Connect to Satellite and try again");
+                auto sat_ = SAT.find(satellite_id)->second;
+                send(sat_, (char*)&client_ID, sizeof(int), 0);
+                send(sat_, (char*)&command_id, sizeof(int), 0);
+                break;
+            }
+            case 7: {
+                if (satellite_id == 0) send_to_client(client, "Satellite is not chosen. Connect to Satellite and try again");
+                auto sat_ = SAT.find(satellite_id)->second;
+                send_to_client(client, "Beta: enter impulse in 'px py pz' format:");
+                int nmsg_size;
+                recv(client, (char*)&nmsg_size, sizeof(int), 0);
+                char* nmsg = new char[nmsg_size+1];
+                nmsg[nmsg_size] = '\0';
+                recv(client, nmsg, nmsg_size, 0);
+
+                send(sat_, (char*)&client_ID, sizeof(int), 0);
+                send(sat_, (char*)&command_id, sizeof(int), 0);
+
+                send(sat_, (char*)&nmsg_size, sizeof(int), 0);
+                send(sat_, nmsg, nmsg_size, 0);
+
+                send_to_client(client, "Adding impulse to Satellite");
+                delete[] nmsg;
+                break;
+            }
+            //case 8: { //Available commands
+            //    send_to_client(client, "help - Get available commands\nrefresh - Get information about Satellites online, connect to them\ndisconnect - Disconnect from server\nget coords - Get Satellite coordinates\nbroadcast coords - Broadcast Satellite coordinates\nstop broadcast - Stop broadcasting coordinates\nadd impulse - Transmit impulse to Satellite\n");
+            //    break;
+            //}
             default: {
                 break;
             }
         }
-        //здесь должна быть обработка какому спутнику отправить сообщение
-
         delete[] msg;
     }
     std::cout << "Successfully disconnected" << std::endl;
@@ -157,19 +222,18 @@ void ClientHandler(const int& client_ID) {
     while(connected) {
         //Asks for client ID
         recv(sat_, (char*)&client_ID, sizeof(int), 0);
-        std::cout << "Got client_ID: " << client_ID << "\n";
-        //Getting message from satellite
+        //std::cout << "Got client_ID: " << client_ID << "\n";
+        /**Getting message from satellite**/
         recv(sat_, (char*)&msg_size, sizeof(int), 0);
-        std::cout << "Got msg_size: " << msg_size << "\n";
+        //std::cout << "Got msg_size: " << msg_size << "\n";
         char* msg = new char[msg_size + 1];
         msg[msg_size] = '\0';
 
         recv(sat_, msg, msg_size, 0);
-        std::cout << "Got msg: " << std::string(msg) << "\n";
+        //std::cout << "Got msg: " << std::string(msg) << "\n";
         //Sends message from satellite to client
         send_to_client(CLIENT.find(client_ID)->second, std::string(msg));
-        std::cout << "Sent msg to client\n";
-        //здесь должна быть обработка какому клиенту отправить сообщение (в целом клиент пока может быть один)
+        //std::cout << "Sent msg to client\n";
         delete[] msg;
     }
 }
@@ -189,12 +253,13 @@ void ClientHandler(const int& client_ID) {
         else {
             char connection_type[2] ;
             int unit_ID;
+
             //receive of connection type:
             // 0 = sat, 1 = client (0 or 1 are sent in a msg from client bellow)
             recv(newConnection, connection_type, sizeof(connection_type), 0);
             recv(newConnection, (char*)&unit_ID, sizeof(int), 0);
             std::cout << "connection type is: " << connection_type[0] << std::endl;
-            std::cout << "unit id is: " << unit_ID << " : " << (char*)&unit_ID << " : " << &(unit_ID) << std::endl;
+            std::cout << "unit id is: " << unit_ID << std::endl;
 
             //depends on connection type we create a new SatHandler/ClientHandler thread:
 

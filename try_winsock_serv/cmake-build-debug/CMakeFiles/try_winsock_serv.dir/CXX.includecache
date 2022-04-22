@@ -13,6 +13,8 @@ includes.h
 D:/Satellite_git_clone/try_winsock_serv/includes.h
 sstream
 -
+vector
+-
 
 D:/Satellite_git_clone/try_winsock_serv/handle_connections.h
 includes.h
@@ -29,4 +31,16 @@ thread
 -
 list
 D:/Satellite_git_clone/try_winsock_serv/list
+
+D:/Satellite_git_clone/try_winsock_serv/main.cpp
+SDKDDKVer.h
+-
+SDKDDKVer.h
+-
+stdio.h
+-
+tchar.h
+-
+handle_connections.h
+D:/Satellite_git_clone/try_winsock_serv/handle_connections.h
 

@@ -21,6 +21,7 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/sat_thred.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/sat_thred.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../try_winsock_serv/cmake-build-debug/CMakeFiles/try_winsock_serv.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../try_winsock_serv/cmake-build-debug/CMakeFiles/try_winsock_serv.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../try_winsock_serv/cmake-build-debug/CMakeFiles/try_winsock_serv.dir/handle_connections.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../try_winsock_serv/cmake-build-debug/CMakeFiles/try_winsock_serv.dir/handle_connections.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../try_winsock_serv/cmake-build-debug/CMakeFiles/try_winsock_serv.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../try_winsock_serv/cmake-build-debug/CMakeFiles/try_winsock_serv.dir/objects.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../try_winsock_serv/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../try_winsock_serv/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
@@ -93,6 +94,8 @@
       <workItem from="1650585497113" duration="7631000" />
       <workItem from="1650596991640" duration="34000" />
       <workItem from="1650619617088" duration="9990000" />
+      <workItem from="1650643210485" duration="14218000" />
+      <workItem from="1650665899464" duration="622000" />
     </task>
     <servers />
   </component>
@@ -109,5 +112,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

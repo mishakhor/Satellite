@@ -3,14 +3,22 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="93f29bac-f7db-43e0-8a0d-ee72a947a367" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sat_thred/cmake-build-debug/CMakeFiles/sat_thred.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../sat_thred/cmake-build-debug/CMakeFiles/sat_thred.dir/main.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sat_thred/cmake-build-debug/CMakeFiles/sat_thred.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../sat_thred/cmake-build-debug/CMakeFiles/sat_thred.dir/objects.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sat_thred/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../sat_thred/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sat_thred/cmake-build-debug/sat_thred.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../sat_thred/cmake-build-debug/sat_thred.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sat_thred/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../sat_thred/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../try_winsock_serv/cmake-build-debug/CMakeFiles/try_winsock_serv.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../try_winsock_serv/cmake-build-debug/CMakeFiles/try_winsock_serv.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../try_winsock_serv/cmake-build-debug/CMakeFiles/try_winsock_serv.dir/handle_connections.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../try_winsock_serv/cmake-build-debug/CMakeFiles/try_winsock_serv.dir/handle_connections.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../try_winsock_serv/cmake-build-debug/CMakeFiles/try_winsock_serv.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../try_winsock_serv/cmake-build-debug/CMakeFiles/try_winsock_serv.dir/objects.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../try_winsock_serv/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../try_winsock_serv/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../try_winsock_serv/cmake-build-debug/try_winsock_serv.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../try_winsock_serv/cmake-build-debug/try_winsock_serv.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../try_winsock_serv/handle_connections.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../try_winsock_serv/handle_connections.cpp" afterDir="false" />
@@ -19,6 +27,9 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -32,8 +43,11 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sat_thred" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -76,6 +90,8 @@
       <workItem from="1650567461926" duration="7175000" />
       <workItem from="1650585497507" duration="7671000" />
       <workItem from="1650619606820" duration="9887000" />
+      <workItem from="1650643250258" duration="13837000" />
+      <workItem from="1650665864700" duration="31000" />
     </task>
     <servers />
   </component>
@@ -83,6 +99,7 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/sat_client$main.coverage" NAME="main Coverage Results" MODIFIED="1650630302153" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/sat_client$main.coverage" NAME="main Coverage Results" MODIFIED="1650661352783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/main_py$main.coverage" NAME="main Coverage Results" MODIFIED="1650666426345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

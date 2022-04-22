@@ -15,9 +15,20 @@ def animate(i):
     ax.set_xlim(-1e7, 1e7)
     ax.set_ylim(-1e7, 1e7)
     ax.set_zlim(-1e7, 1e7)
-    ax.plot(data[:, 0], data[:, 1], data[:, 2], c="r")
-    ax.scatter(data[-1, 0], data[-1, 1], data[-1, 2], c="black", marker="H")
+    ax.scatter(data[:, 0], data[:, 1], data[:, 2], c="green")
+    ax.scatter(data[-1, 0], data[-1, 1], data[-1, 2], c="black", s=20,marker="H")
+    rx, ry, rz = 6400000, 6400000, 6400000
+    u = np.linspace(0, 2 * np.pi, 100)
+    v = np.linspace(0, np.pi, 100)
+    x = rx * np.outer(np.cos(u), np.sin(v))
+    y = ry * np.outer(np.sin(u), np.sin(v))
+    z = rz * np.outer(np.ones_like(u), np.cos(v))
 
+    ax.plot_wireframe(x, y, z, alpha=0.1)
+
+    max_radius = max(rx, ry, rz)
+    for axis in 'xyz':
+        getattr(ax, 'set_{}lim'.format(axis))((-max_radius, max_radius))
 
 # pushes new coords into container for animation
 def push_coords(r):
@@ -47,8 +58,9 @@ def client_handler():
         time.sleep(0.1)
 
         data = sock.recv(lengh_rcv + 3)
-        print(data.decode('utf-8')[3:])
         data_str = data.decode('utf-8')[3:]
+        if data_str[0:4] != "push":
+            print(data_str)
         analyse_data(data_str)
         # first 3 bite's are not message
         time.sleep(0.1)
@@ -88,8 +100,10 @@ x.start()
 
 y = threading.Thread(target=client_input, args=())
 y.start()
-print("Commands available:\n1. 'get coords' - get coordinates\n"
-      "2. 'get coords cont' - get coordinates continuously")
+print("Available commands:\nrefresh - Get information about Satellites online, connect to them\ndisconnect - "
+      "Disconnect from server\nget coords - Get Satellite coordinates\nbroadcast coords - Broadcast Satellite "
+      "coordinates (with drawing)\nstop broadcast - Stop broadcasting coordinates\nadd impulse - Transmit impulse to "
+      "Satellite\n")
 print("Type 'refresh' to see available satellites:")
 
 fig = plt.figure()

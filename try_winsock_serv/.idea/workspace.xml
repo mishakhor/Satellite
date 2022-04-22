@@ -21,6 +21,7 @@
       <change beforePath="$PROJECT_DIR$/../sat_thred/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../sat_thred/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sat_thred/cmake-build-debug/sat_thred.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../sat_thred/cmake-build-debug/sat_thred.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sat_thred/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../sat_thred/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/try_winsock_serv.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/try_winsock_serv.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/try_winsock_serv.dir/handle_connections.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/try_winsock_serv.dir/handle_connections.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/try_winsock_serv.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/try_winsock_serv.dir/objects.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
@@ -61,7 +62,7 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sat_thred" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sat_client" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -94,10 +95,24 @@
       <workItem from="1650585724215" duration="10603000" />
       <workItem from="1650597028133" duration="299000" />
       <workItem from="1650619593979" duration="9996000" />
+      <workItem from="1650643175520" duration="18407000" />
+      <workItem from="1650665810228" duration="708000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
